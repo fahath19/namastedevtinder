@@ -140,3 +140,6 @@ profilrouter.patch("/updateuser",async (req,res)=>{
     
 
 })
+
+
+module.exports=profilrouter;

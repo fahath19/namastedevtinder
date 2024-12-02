@@ -84,4 +84,4 @@ authrouter.post("/loginuser",async (req,res)=>{
    
 })
 
- 
+module.exports=authrouter;
