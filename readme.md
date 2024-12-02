@@ -30,7 +30,7 @@ mongodb+srv://abdulbahad:<db_password>@namastenodejs.57giz.mongodb.net/
 mongodb+srv://abdulbahad:Bahad2003@namastenodejs.57giz.mongodb.net/
 
 
-
+mongodb+srv://abdulbahad:Bahad2003@cluster.jmzoa.mongodb.net/?retryWrites=true&w=majority&appName=cluster
 
 
 
@@ -104,3 +104,15 @@ https://cloud.mongodb.com/v2/6708e990d104b406d8d9588d#/security/network/accessLi
         "age":40
 
 }
+
+//GROUP THE API
+1-AUTHENTICATION API
+     /login api
+     /logout api
+     /signup api
+2-PROFILE API
+     /profile api
+     /dele
+3-REQUEST API
+4-
+
