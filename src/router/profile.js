@@ -1,12 +1,13 @@
 const express=require("express");
-const authrouter=express.Router();
+const profilrouter=express.Router();
 const bcrypt=require("bcrypt");
-const user=require("./model/userschema");
+const user=require("../model/userschema");
+const {authapi}=require("../Middleware/auth.js");
 
 
 
 //USER GET API FOR GETING THE USER DATA FROM THE MONGO DB USING /getuser
-app.get("/userget",async (req,res)=>{
+profilrouter.get("/userget",async (req,res)=>{
     let useremail=req.body.email;
     
     try{
@@ -37,7 +38,7 @@ app.get("/userget",async (req,res)=>{
 //USER GET API FOR GETING THE USER DATA FROM THE MONGO DB USING /feedapi
 
 
-app.get("/feedapi",async (req,res)=>{
+profilrouter.get("/feedapi",async (req,res)=>{
     // let useremail=req.body.email;
     
     try{
@@ -65,7 +66,7 @@ app.get("/feedapi",async (req,res)=>{
 
 
 //USER DELETE API FOR  USER DATA FROM THE MONGO DB USING /deleteuser
-app.delete("/deleteuser",async (req,res)=>{
+profilrouter.delete("/deleteuser",async (req,res)=>{
     let userid=req.body._id;
     
     try{
@@ -91,7 +92,7 @@ app.delete("/deleteuser",async (req,res)=>{
 
 
 
-app.post("/profile",authapi, (req,res)=>{
+profilrouter.post("/profile",authapi, (req,res)=>{
 
     try{
          const userdata=req.user;
@@ -110,7 +111,7 @@ app.post("/profile",authapi, (req,res)=>{
 
 //USER DELETE API FOR  USER DATA FROM THE MONGO DB USING /updateuser
 
-app.patch("/updateuser",async (req,res)=>{
+profilrouter.patch("/updateuser",async (req,res)=>{
     let useridd=req.body._id;
     let updatedata=req.body;
 

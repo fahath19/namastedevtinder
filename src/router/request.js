@@ -4,6 +4,7 @@ const express=require("express");
 // const bcrypt=require("bcrypt");
 // const user=require("./model/userschema");
 
+const {authapi}=require("../Middleware/auth.js");
 
 //SEND CONNECTION TO USER API
 

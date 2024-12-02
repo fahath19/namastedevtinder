@@ -1,7 +1,7 @@
 const express=require("express");
 const authrouter=express.Router();
 const bcrypt=require("bcrypt");
-const user=require("./model/userschema");
+const user=require("../model/userschema");
 
 
 //SINGUPPAGE API
