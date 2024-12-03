@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken');
 let app=express()
 app.use(express.json());
 app.use(cookieParser())
-const {authapi}=require("../Middleware/auth.js");
+// const {authapi}=require("../Middleware/auth.js");
 
 const authrouter=require("../src/router/auth.js");
 const profilerouter=require("../src/router/profile.js");

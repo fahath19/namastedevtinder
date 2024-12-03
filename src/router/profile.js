@@ -2,7 +2,7 @@ const express=require("express");
 const profilrouter=express.Router();
 const bcrypt=require("bcrypt");
 const user=require("../model/userschema");
-const {authapi}=require("../Middleware/auth.js");
+const {authapi}=require("../Middleware/auth");
 
 
 
