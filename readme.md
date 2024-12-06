@@ -1,3 +1,48 @@
+/*
+
+
+
+//USER GET API FOR GETING THE USER DATA FROM THE MONGO DB USING /getuser
+profilrouter.get("/userget",async (req,res)=>{
+    let useremail=req.body.email;
+    
+    try{
+        let getuser= await user.findOne({})
+        // if(getuser.length===0){
+         if(!getuser){
+
+            res.send("USER NOT FOUND PLEASE GIVE CORRECT DATA")
+        }
+        else{
+            res.send(getuser)
+
+        }
+        
+    }
+    catch(err){
+    res.send("SOMETHING WENT WRONG")
+          
+    }
+     
+    
+     
+
+});
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 FOR WE USE THE APP.USE() METHOD is match all the routes executes
 
 
@@ -105,14 +150,21 @@ https://cloud.mongodb.com/v2/6708e990d104b406d8d9588d#/security/network/accessLi
 
 }
 
-//GROUP THE API
-1-AUTHENTICATION API
+----| GROUP THE API BY USING EXPRESS ROUTER |----
+
+AUTHENTICATION API:-
+
      /login api
      /logout api
      /signup api
-2-PROFILE API
-     /profile api
-     /dele
-3-REQUEST API
-4-
+
+PROFILE API:-
+
+     /profile API
+     /profile/delete API
+     /profile/edit API
+     /profile/view API
+
+REQUEST API:-
+
 

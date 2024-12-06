@@ -1,4 +1,4 @@
-const jwt=require("jsonwebtoken")
+const jwt=require("jsonwebtoken");
 const user=require("../model/userschema");
 const authapi=async (req,res,next)=>{
    try{

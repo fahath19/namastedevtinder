@@ -16,6 +16,16 @@ const signupvalidate=(req)=>{
     //      throw new Error("SOME THING WENT WRONG IN VALIDATONFILE");
     //  }
 }
+const isalloweddata=(userdata)=>{
+         let ISALLOWED_DATA=["firstName","lastName","age","gender","skill"];
+         let isallow= Object.keys(userdata).every((field)=>ISALLOWED_DATA.includes(field));
+         return isallow;
+
+}
+
+
+
 module.exports={
-    signupvalidate
+    signupvalidate,
+    isalloweddata
 }

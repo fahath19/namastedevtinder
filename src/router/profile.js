@@ -3,35 +3,8 @@ const profilrouter=express.Router();
 const bcrypt=require("bcrypt");
 const user=require("../model/userschema");
 const {authapi}=require("../Middleware/auth");
+const {isalloweddata}=require("../utils/validation");
 
-
-
-//USER GET API FOR GETING THE USER DATA FROM THE MONGO DB USING /getuser
-profilrouter.get("/userget",async (req,res)=>{
-    let useremail=req.body.email;
-    
-    try{
-        let getuser= await user.findOne({})
-        // if(getuser.length===0){
-         if(!getuser){
-
-            res.send("USER NOT FOUND PLEASE GIVE CORRECT DATA")
-        }
-        else{
-            res.send(getuser)
-
-        }
-        
-    }
-    catch(err){
-    res.send("SOMETHING WENT WRONG")
-          
-    }
-     
-    
-     
-
-})
 
 
 
@@ -65,26 +38,6 @@ profilrouter.get("/feedapi",async (req,res)=>{
 
 
 
-//USER DELETE API FOR  USER DATA FROM THE MONGO DB USING /deleteuser
-profilrouter.delete("/deleteuser",async (req,res)=>{
-    let userid=req.body._id;
-    
-    try{
-
-       await user.findByIdAndDelete({_id:userid});
-    res.send("DATA IS SUCCESSFULLY DELETED...")
-     
-        
-    }
-    catch(err){
-    res.send("SOMETHING WENT WRONG")
-          
-    }
-     
-    
-     
-
-})
 
 
 
@@ -108,38 +61,37 @@ profilrouter.post("/profile",authapi, (req,res)=>{
 
 })
 
+//"/profil/edit" API TO EDIT THE PROFILE INFORMATION
 
-//USER DELETE API FOR  USER DATA FROM THE MONGO DB USING /updateuser
-
-profilrouter.patch("/updateuser",async (req,res)=>{
-    let useridd=req.body._id;
-    let updatedata=req.body;
-
-    let ALLOWEDUPDATEDATA=["_id","passWord","skill","firstName","lastName"];
-    if(updatedata.skill.length>10){
-        res.send("skills should be less then 10")
-        return;
-     }
-     try{
-
-        let ISALLOWEDDATA=Object.keys(updatedata).every((keys)=>ALLOWEDUPDATEDATA.includes(keys));
-
-        
-        if(!ISALLOWEDDATA){
-            res.send("data cannot be modified..")
+profilrouter.post("/profil/edit",authapi,(req,res)=>{
+       
+    try{
+        if(!isalloweddata(req.body)){
+            throw new error("YOU ARE  NOT ALLOWED TO EDIT THE PROFILE");
         }
-          await user.findByIdAndUpdate(useridd,updatedata,{
-            runValidators:true,
-            returnDocument:"after"
-        });
-          res.send("USER SUCCESSFULLY UPDATED...");
-     }
-     catch(err){
-         res.status(401).send("ERROR:",err.message)
-     }
+        
+        const LOGINNED_USER=req.user;
+
+        Object.keys(req.body).forEach((item)=>LOGINNED_USER[item]=req.body[item]);
+        LOGINNED_USER.save();
+        
+
+    }
+    catch(err){
+        res.send("PROFILE EDIT ERROR:",err);
+    }
     
+       
 
 })
+
+
+
+
+
+
+
+
 
 
 module.exports=profilrouter;
