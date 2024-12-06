@@ -74,6 +74,8 @@ profilrouter.post("/profil/edit",authapi,(req,res)=>{
 
         Object.keys(req.body).forEach((item)=>LOGINNED_USER[item]=req.body[item]);
         LOGINNED_USER.save();
+
+        res.send("successfull edited the profile")
         
 
     }
@@ -85,7 +87,9 @@ profilrouter.post("/profil/edit",authapi,(req,res)=>{
 
 })
 
-
+profilrouter.get("/profile/view",authapi,(req,res)=>{
+    res.json({message: "profile successfully fetched",data:req.user});
+})
 
 
 
