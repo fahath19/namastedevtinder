@@ -166,5 +166,11 @@ PROFILE API:-
      /profile/view API
 
 REQUEST API:-
+-GET /USER/CONNECTION
+-GET /USER/REQUEST
+-GET /USER/FEED
+
+STATUS: ignore,interseted,accepted,rejected
+
 
 
